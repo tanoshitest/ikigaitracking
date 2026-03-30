@@ -51,39 +51,36 @@ export default function ProductCard({ product, onAdd }: ProductCardProps) {
           {product.tagline}
         </p>
 
-        {/* Quantity Selector */}
-        <div className="flex items-center mb-6">
+        {/* Quantity Selector & Add Cart Button */}
+        <div className="flex items-center space-x-3 mt-auto">
           <div className="flex items-center border border-gray-200 rounded-sm">
             <button
               onClick={handleDecrement}
-              className="px-3 py-2 text-gray-500 hover:text-black transition-colors"
+              className="px-2 py-2 text-gray-500 hover:text-black transition-colors"
               aria-label="Decrease quantity"
             >
               <Minus className="w-3 h-3" />
             </button>
-            <span className="w-10 text-center text-sm font-medium border-x border-gray-100">
+            <span className="w-8 text-center text-xs font-medium border-x border-gray-100">
               {quantity}
             </span>
             <button
               onClick={handleIncrement}
-              className="px-3 py-2 text-gray-500 hover:text-black transition-colors"
+              className="px-2 py-2 text-gray-500 hover:text-black transition-colors"
               aria-label="Increase quantity"
             >
               <Plus className="w-3 h-3" />
             </button>
           </div>
-          <span className="ml-4 text-xs text-gray-400 uppercase tracking-widest">Quantity</span>
+          
+          <button
+            onClick={handleAddToCart}
+            className="flex-grow bg-[#1a1a1a] text-white px-4 py-[10px] text-[10px] uppercase tracking-widest hover:bg-gray-800 transition-all duration-300 font-medium flex items-center justify-center gap-2"
+          >
+            Add Cart
+            <Plus className="w-3 h-3" />
+          </button>
         </div>
-
-        <button
-          onClick={handleAddToCart}
-          className="inline-flex items-center justify-between w-full bg-[#1a1a1a] text-white px-6 py-4 text-xs uppercase tracking-widest hover:bg-gray-800 transition-all duration-300 group/btn mt-auto"
-        >
-          <span className="font-medium">Shop now</span>
-          <div className="bg-white/10 p-1 rounded-full group-hover/btn:bg-white/20 transition-colors">
-            <Plus className="w-4 h-4" />
-          </div>
-        </button>
       </div>
     </div>
   );
