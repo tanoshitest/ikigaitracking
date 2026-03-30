@@ -6,7 +6,7 @@ export default function Footer() {
   return (
     <footer className="bg-[#1a1a1a] text-white">
       <div className="max-w-7xl mx-auto px-6 py-20">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           <div>
             <Link to="/" className="inline-block mb-6">
               <img
@@ -83,12 +83,9 @@ export default function Footer() {
               </a>
             </div>
           </div>
-
-          <div className="lg:col-span-1">
-            <h4 className="text-sm uppercase tracking-wider mb-6 text-white font-medium">Stay Updated</h4>
-            <Newsletter />
-          </div>
         </div>
+
+        <Newsletter />
 
         <div className="border-t border-gray-800 mt-12 pt-8">
           <p className="text-gray-400 text-sm mb-4">

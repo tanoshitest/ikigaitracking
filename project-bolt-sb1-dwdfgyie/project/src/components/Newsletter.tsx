@@ -14,7 +14,7 @@ export default function Newsletter() {
   };
 
   return (
-    <div className="max-w-md mx-auto text-center my-12">
+    <div className="max-w-2xl text-left my-12">
       <h3 className="text-sm uppercase tracking-wider mb-4">Stay Updated</h3>
       <p className="text-gray-400 text-sm mb-6">
         Drop your email address to receive news and updates. No spam!
