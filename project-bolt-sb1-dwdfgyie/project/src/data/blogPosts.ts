@@ -45,4 +45,22 @@ export const blogPosts: BlogPost[] = [
     image: 'linear-gradient(135deg, #d97706 0%, #ea580c 100%)',
     date: 'March 25, 2026',
   },
+  {
+    id: '5',
+    slug: 'lemongrass-magic',
+    title: 'The Magic of Lemongrass',
+    excerpt: 'Unlock the aromatic potential of this essential Vietnamese herb.',
+    content: 'In Vietnamese cuisine, lemongrass is more than just an ingredient—it is the soul of the dish. Its citrusy, floral aroma provides an unmistakable brightness to our beef broths and stir-fries. We source our lemongrass from local growers to ensure every stalk is bursting with flavor.',
+    image: 'linear-gradient(135deg, #abbd81 0%, #849b5c 100%)',
+    date: 'March 28, 2026',
+  },
+  {
+    id: '6',
+    slug: 'spring-rolls-tradition',
+    title: 'Spring Rolls: A Crispy Tradition',
+    excerpt: 'Everything you need to know about the perfect Vietnamese Spring Roll.',
+    content: 'The perfect spring roll is a study in textures: a shatteringly crisp exterior yielding to a savory, tender filling. Whether filled with pork, prawns, or garden-fresh vegetables, our spring rolls are handcrafted daily using traditional rice paper wrapping techniques.',
+    image: 'linear-gradient(135deg, #f3e5ab 0%, #e1c16e 100%)',
+    date: 'March 30, 2026',
+  },
 ];
