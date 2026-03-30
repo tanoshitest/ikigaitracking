@@ -6,19 +6,23 @@ export default function Footer() {
   return (
     <footer className="bg-[#1a1a1a] text-white">
       <div className="max-w-7xl mx-auto px-6 py-20">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-16">
           <div>
-            <h3 className="text-2xl font-serif mb-4" style={{ fontFamily: "'Playfair Display', serif" }}>
-              Madame Mai
-            </h3>
+            <Link to="/" className="inline-block mb-6">
+              <img
+                src="/logo.png"
+                alt="Madame Mai Logo"
+                className="w-24 h-auto object-contain brightness-0 invert"
+              />
+            </Link>
             <p className="text-gray-400 text-sm leading-relaxed">
               Handcrafted frozen Vietnamese soup bowls. Real ingredients, real fast, really good.
             </p>
           </div>
 
           <div>
-            <h4 className="text-sm uppercase tracking-wider mb-4">Navigation</h4>
-            <nav className="flex flex-col space-y-2">
+            <h4 className="text-sm uppercase tracking-wider mb-6 text-white font-medium">Navigation</h4>
+            <nav className="flex flex-col space-y-3">
               <Link to="/" className="text-gray-400 hover:text-white transition-colors text-sm">
                 Home
               </Link>
@@ -35,18 +39,19 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="text-sm uppercase tracking-wider mb-4">Contact</h4>
-            <div className="text-gray-400 text-sm space-y-2">
+            <h4 className="text-sm uppercase tracking-wider mb-6 text-white font-medium">Contact</h4>
+            <div className="text-gray-400 text-sm space-y-3">
               <p>56a Lara Way</p>
-              <p>Campbellfield VIC 3061, Australia</p>
-              <p className="mt-4">Phone: 0450 218 007</p>
+              <p>Campbellfield VIC 3061</p>
+              <p>Australia</p>
+              <p className="pt-2">Phone: 0450 218 007</p>
               <p>Email: info@madame-mai.com.au</p>
             </div>
           </div>
 
           <div>
-            <h4 className="text-sm uppercase tracking-wider mb-4">Follow Us</h4>
-            <div className="flex space-x-4 mb-6">
+            <h4 className="text-sm uppercase tracking-wider mb-6 text-white font-medium">Follow Us</h4>
+            <div className="flex space-x-4">
               <a
                 href="https://instagram.com/madamemai_au"
                 target="_blank"
@@ -54,7 +59,7 @@ export default function Footer() {
                 className="hover:opacity-60 transition-opacity"
                 aria-label="Instagram"
               >
-                <Instagram className="w-6 h-6" />
+                <Instagram className="w-5 h-5" />
               </a>
               <a
                 href="https://facebook.com/madamemaiau"
@@ -63,7 +68,7 @@ export default function Footer() {
                 className="hover:opacity-60 transition-opacity"
                 aria-label="Facebook"
               >
-                <Facebook className="w-6 h-6" />
+                <Facebook className="w-5 h-5" />
               </a>
               <a
                 href="https://tiktok.com/@_madame_mai"
@@ -72,15 +77,18 @@ export default function Footer() {
                 className="hover:opacity-60 transition-opacity"
                 aria-label="TikTok"
               >
-                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" />
                 </svg>
               </a>
             </div>
           </div>
-        </div>
 
-        <Newsletter />
+          <div className="lg:col-span-1">
+            <h4 className="text-sm uppercase tracking-wider mb-6 text-white font-medium">Stay Updated</h4>
+            <Newsletter />
+          </div>
+        </div>
 
         <div className="border-t border-gray-800 mt-12 pt-8">
           <p className="text-gray-400 text-sm mb-4">
