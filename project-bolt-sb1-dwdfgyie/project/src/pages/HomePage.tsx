@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Instagram, Facebook, Plus } from 'lucide-react';
+import { Instagram, Facebook, Plus, ArrowRight } from 'lucide-react';
 import Marquee from '../components/Marquee';
-import Newsletter from '../components/Newsletter';
 import Toast from '../components/Toast';
 import { products } from '../data/products';
+import { blogPosts } from '../data/blogPosts';
 import { useCart } from '../contexts/CartContext';
 
 export default function HomePage() {
@@ -16,7 +16,7 @@ export default function HomePage() {
       <ValuePropositions />
       <Marquee text="Comfort in a Bowl, Ready in 10 Mins" variant="light" />
       <SocialFeed />
-      <NewsletterSection />
+      <BlogSection />
     </div>
   );
 }
@@ -210,11 +210,85 @@ function SocialFeed() {
   );
 }
 
-function NewsletterSection() {
+function BlogSection() {
+  const featuredPost = blogPosts[0];
+  const sidePosts = blogPosts.slice(1, 4);
+
   return (
     <section className="py-24 px-6 bg-[#f7f5f2]">
       <div className="max-w-7xl mx-auto">
-        <Newsletter />
+        <div className="flex justify-between items-end mb-12">
+          <div>
+            <p className="text-sm uppercase tracking-[0.3em] mb-4">Madame Mai Stories</p>
+            <h2 
+              className="text-4xl md:text-5xl font-serif" 
+              style={{ fontFamily: "'Playfair Display', serif" }}
+            >
+              Latest from the Kitchen
+            </h2>
+          </div>
+          <Link 
+            to="/blog" 
+            className="hidden md:flex items-center space-x-2 text-sm uppercase tracking-wider hover:opacity-60 transition-opacity pb-2"
+          >
+            <span>View All</span>
+            <ArrowRight className="w-4 h-4" />
+          </Link>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+          {/* Main Post */}
+          <div className="lg:col-span-2 group">
+            <Link to={`/blog/${featuredPost.slug}`} className="block">
+              <div 
+                className="aspect-[16/9] mb-8 overflow-hidden"
+                style={{ background: featuredPost.image }}
+              >
+                <div className="w-full h-full transition-transform duration-700 group-hover:scale-105" />
+              </div>
+              <p className="text-xs uppercase tracking-wider text-gray-500 mb-4">{featuredPost.date}</p>
+              <h3 className="text-3xl font-serif mb-4 group-hover:opacity-70 transition-opacity">
+                {featuredPost.title}
+              </h3>
+              <p className="text-gray-600 leading-relaxed max-w-2xl mb-6">
+                {featuredPost.excerpt}
+              </p>
+              <span className="inline-block text-sm uppercase tracking-wider border-b-2 border-black pb-1">
+                Read Full Story
+              </span>
+            </Link>
+          </div>
+
+          {/* Side Posts Stack */}
+          <div className="space-y-10">
+            {sidePosts.map((post) => (
+              <Link key={post.id} to={`/blog/${post.slug}`} className="group flex gap-6 items-start">
+                <div 
+                  className="w-24 h-24 flex-shrink-0 overflow-hidden"
+                  style={{ background: post.image }}
+                >
+                   <div className="w-full h-full transition-transform duration-500 group-hover:scale-110" />
+                </div>
+                <div>
+                  <p className="text-[10px] uppercase tracking-widest text-gray-400 mb-2">{post.date}</p>
+                  <h4 className="text-lg font-medium leading-snug group-hover:opacity-70 transition-opacity">
+                    {post.title}
+                  </h4>
+                  <span className="inline-block text-[10px] uppercase tracking-wider mt-3 opacity-0 group-hover:opacity-100 transition-opacity">
+                    Read More +
+                  </span>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+
+        <Link 
+          to="/blog" 
+          className="flex md:hidden items-center justify-center space-x-2 text-sm uppercase tracking-wider border border-black py-4 mt-12"
+        >
+          <span>View All Stories</span>
+        </Link>
       </div>
     </section>
   );

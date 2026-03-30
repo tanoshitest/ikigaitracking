@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useParams, Link, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import { products } from '../data/products';
 import { useCart } from '../contexts/CartContext';
@@ -14,6 +14,7 @@ export default function ProductDetailPage() {
   const [activeTab, setActiveTab] = useState<'description' | 'ingredients' | 'preparation'>('description');
 
   const product = products.find((p) => p.slug === slug);
+  const [selectedImage, setSelectedImage] = useState(product?.image || '');
 
   if (!product) {
     return (
@@ -51,12 +52,30 @@ export default function ProductDetailPage() {
         </button>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-          <div
-            className="aspect-square"
-            style={{
-              background: product.image,
-            }}
-          />
+          <div className="space-y-4">
+            <div
+              className="aspect-square w-full transition-all duration-500"
+              style={{
+                background: selectedImage || product.image,
+              }}
+            />
+            {product.images && product.images.length > 0 && (
+              <div className="grid grid-cols-4 gap-4">
+                {product.images.map((img, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setSelectedImage(img)}
+                    className={`aspect-square w-full border-2 transition-all duration-300 ${
+                      selectedImage === img 
+                        ? 'border-[#1a1a1a] opacity-100' 
+                        : 'border-transparent opacity-50 hover:opacity-80'
+                    }`}
+                    style={{ background: img }}
+                  />
+                ))}
+              </div>
+            )}
+          </div>
 
           <div>
             <h1

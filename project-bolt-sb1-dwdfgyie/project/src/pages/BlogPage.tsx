@@ -1,32 +1,8 @@
 import { Link } from 'react-router-dom';
+import { blogPosts } from '../data/blogPosts';
 
 export default function BlogPage() {
-  const posts = [
-    {
-      id: '1',
-      slug: 'perfect-pho',
-      title: 'The Art of Perfect Pho',
-      excerpt: 'Discover the secrets behind creating the perfect bowl of Vietnamese Pho.',
-      image: 'linear-gradient(135deg, #8b4513 0%, #a0522d 100%)',
-      date: 'March 15, 2026',
-    },
-    {
-      id: '2',
-      slug: 'laksa-origins',
-      title: 'The Origins of Laksa',
-      excerpt: 'Exploring the rich history and cultural significance of this beloved Southeast Asian dish.',
-      image: 'linear-gradient(135deg, #ff6b35 0%, #f7931e 100%)',
-      date: 'March 10, 2026',
-    },
-    {
-      id: '3',
-      slug: 'hu-tieu-secrets',
-      title: 'Secrets of the Perfect Hu Tieu',
-      excerpt: 'Exploring the delicate balance of flavors in Southern Vietnam\'s most beloved breakfast soup.',
-      image: 'linear-gradient(135deg, #4a7c59 0%, #6b9080 100%)',
-      date: 'March 20, 2026',
-    },
-  ];
+  const posts = blogPosts;
 
   return (
     <div className="min-h-screen bg-white pt-24">
