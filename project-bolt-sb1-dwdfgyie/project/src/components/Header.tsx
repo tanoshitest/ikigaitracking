@@ -44,25 +44,27 @@ export default function Header() {
                 src="/logo.png"
                 alt="Madame Mai Logo"
                 className={`w-10 h-10 object-contain transition-all duration-300 ${
-                  isScrolled ? 'invert brightness-0' : 'brightness-0 invert'
+                  isScrolled ? 'brightness-0' : 'brightness-0 invert'
                 }`}
               />
               <span 
                 className={`text-2xl font-serif tracking-tight transition-colors duration-300 ${
-                  isScrolled ? 'text-black' : 'text-[#1a1a1a]'
+                  isScrolled ? 'text-black' : 'text-white md:text-white'
                 }`}
                 style={{ fontFamily: "'Playfair Display', serif" }}
               >
                 Madame Mai
               </span>
             </Link>
-
+ 
             <nav className="hidden md:flex items-center space-x-8">
               {navLinks.map(link => (
                 <Link
                   key={link.path}
                   to={link.path}
-                  className="text-sm uppercase tracking-wider hover:opacity-60 transition-opacity"
+                  className={`text-sm uppercase tracking-wider hover:opacity-60 transition-all duration-300 ${
+                    isScrolled ? 'text-black' : 'text-white'
+                  }`}
                 >
                   {link.name}
                 </Link>
