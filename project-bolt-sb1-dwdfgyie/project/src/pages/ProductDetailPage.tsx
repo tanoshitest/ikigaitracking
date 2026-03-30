@@ -11,6 +11,7 @@ export default function ProductDetailPage() {
   const navigate = useNavigate();
   const { addToCart } = useCart();
   const [showToast, setShowToast] = useState(false);
+  const [activeTab, setActiveTab] = useState<'description' | 'ingredients' | 'preparation'>('description');
 
   const product = products.find((p) => p.slug === slug);
 
@@ -31,6 +32,12 @@ export default function ProductDetailPage() {
     addToCart(product);
     setShowToast(true);
   };
+
+  const tabs = [
+    { id: 'description', label: 'Description' },
+    { id: 'ingredients', label: 'Ingredients' },
+    { id: 'preparation', label: 'Preparation' },
+  ] as const;
 
   return (
     <div className="min-h-screen bg-white pt-24">
@@ -75,38 +82,59 @@ export default function ProductDetailPage() {
 
             <button
               onClick={handleAddToCart}
-              className="w-full bg-[#1a1a1a] text-white py-4 text-sm uppercase tracking-wider hover:bg-gray-800 transition-colors mb-12"
+              className="w-full bg-[#1a1a1a] text-white py-4 text-sm uppercase tracking-wider hover:bg-gray-800 transition-colors mb-10"
             >
               Add to Cart
             </button>
 
-            <div className="mb-12">
-              <h2 className="text-xl font-medium mb-4">Description</h2>
-              <p className="text-gray-600 leading-relaxed">{product.description}</p>
-            </div>
-
-            <div className="mb-12">
-              <h2 className="text-xl font-medium mb-4">Ingredients</h2>
-              <ul className="space-y-2">
-                {product.ingredients.map((ingredient, index) => (
-                  <li key={index} className="text-gray-600 flex items-start">
-                    <span className="mr-2">•</span>
-                    <span>{ingredient}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
+            {/* Tabs */}
             <div>
-              <h2 className="text-xl font-medium mb-4">Preparation</h2>
-              <ol className="space-y-2">
-                {product.preparationSteps.map((step, index) => (
-                  <li key={index} className="text-gray-600 flex items-start">
-                    <span className="mr-3 font-medium">{index + 1}.</span>
-                    <span>{step}</span>
-                  </li>
+              <div className="flex border-b border-gray-200 mb-6">
+                {tabs.map((tab) => (
+                  <button
+                    key={tab.id}
+                    onClick={() => setActiveTab(tab.id)}
+                    className={`relative px-6 py-3 text-sm uppercase tracking-wider transition-colors ${
+                      activeTab === tab.id
+                        ? 'text-[#1a1a1a] font-medium'
+                        : 'text-gray-400 hover:text-gray-600'
+                    }`}
+                  >
+                    {tab.label}
+                    {activeTab === tab.id && (
+                      <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#1a1a1a]" />
+                    )}
+                  </button>
                 ))}
-              </ol>
+              </div>
+
+              <div className="min-h-[160px]">
+                {activeTab === 'description' && (
+                  <p className="text-gray-600 leading-relaxed">{product.description}</p>
+                )}
+
+                {activeTab === 'ingredients' && (
+                  <ul className="space-y-2">
+                    {product.ingredients.map((ingredient, index) => (
+                      <li key={index} className="text-gray-600 flex items-start">
+                        <span className="mr-2">•</span>
+                        <span>{ingredient}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+
+                {activeTab === 'preparation' && (
+                  <ol className="space-y-2">
+                    {product.preparationSteps.map((step, index) => (
+                      <li key={index} className="text-gray-600 flex items-start">
+                        <span className="mr-3 font-medium">{index + 1}.</span>
+                        <span>{step}</span>
+                      </li>
+                    ))}
+                  </ol>
+                )}
+              </div>
             </div>
           </div>
         </div>
