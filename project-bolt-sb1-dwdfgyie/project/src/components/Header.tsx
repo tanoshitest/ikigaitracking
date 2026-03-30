@@ -39,8 +39,22 @@ export default function Header() {
       >
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
-            <Link to="/" className="text-2xl font-serif tracking-tight" style={{ fontFamily: "'Playfair Display', serif" }}>
-              Madame Mai
+            <Link to="/" className="flex items-center space-x-3 group animate-in fade-in slide-in-from-top-4 duration-700">
+              <img
+                src="/logo.png"
+                alt="Madame Mai Logo"
+                className={`w-10 h-10 object-contain transition-all duration-300 ${
+                  isScrolled ? 'invert brightness-0' : 'brightness-0 invert'
+                }`}
+              />
+              <span 
+                className={`text-2xl font-serif tracking-tight transition-colors duration-300 ${
+                  isScrolled ? 'text-black' : 'text-[#1a1a1a]'
+                }`}
+                style={{ fontFamily: "'Playfair Display', serif" }}
+              >
+                Madame Mai
+              </span>
             </Link>
 
             <nav className="hidden md:flex items-center space-x-8">
