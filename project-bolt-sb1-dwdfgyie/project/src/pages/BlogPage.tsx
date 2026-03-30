@@ -22,9 +22,11 @@ export default function BlogPage() {
             <article key={post.id} className="group">
               <Link to={`/blog/${post.slug}`}>
                 <div
-                  className="aspect-[4/3] mb-6 overflow-hidden transition-transform duration-300 group-hover:scale-105"
+                  className="aspect-[4/3] mb-6 overflow-hidden transition-transform duration-300 group-hover:scale-105 bg-gray-100"
                   style={{
-                    background: post.image,
+                    backgroundImage: `url(${post.image})`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center center'
                   }}
                 />
                 <p className="text-xs uppercase tracking-wider text-gray-500 mb-2">

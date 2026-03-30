@@ -44,9 +44,11 @@ export default function BlogPostPage() {
         </h1>
 
         <div
-          className="aspect-video mb-12"
+          className="aspect-video mb-12 bg-gray-100"
           style={{
-            background: post.image,
+            backgroundImage: `url(${post.image})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center center'
           }}
         />
 

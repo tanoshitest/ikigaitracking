@@ -23,13 +23,10 @@ export default function HomePage() {
 
 function HeroSection() {
   return (
-    <section className="relative h-[60vh] md:h-screen flex items-center justify-center overflow-hidden pt-12 mt-12 bg-white">
-      <Link 
-        to="/our-products" 
-        className="absolute inset-0 block w-full h-full group"
-      >
+    <section className="relative h-[60vh] md:h-screen flex items-end justify-center overflow-hidden bg-white pb-16 lg:pb-24">
+      <div className="absolute inset-0 block w-full h-full">
         <div
-          className="absolute inset-0 bg-cover bg-center transition-transform duration-1000 group-hover:scale-[1.02]"
+          className="absolute inset-0 bg-cover bg-center"
           style={{
             backgroundImage: 'url(/banner.png)',
             backgroundSize: 'contain',
@@ -41,7 +38,22 @@ function HeroSection() {
           <h1>Madame Mai - Comfort in a Bowl, Ready in 10 Minutes</h1>
           <p>Real Ingredients. Real Fast. Really Good. Snap, Heat, Eat!</p>
         </div>
-      </Link>
+      </div>
+      
+      <div className="relative z-10 flex flex-col md:flex-row gap-4 px-6 mb-8 lg:mb-20">
+        <Link
+          to="/our-products"
+          className="bg-[#1a1a1a] text-white px-10 py-4 text-xs uppercase tracking-[0.25em] font-medium hover:bg-gray-800 transition-all duration-300 min-w-[200px] text-center"
+        >
+          Our Products
+        </Link>
+        <Link
+          to="/our-story"
+          className="bg-white/90 backdrop-blur-sm border border-black text-[#1a1a1a] px-10 py-4 text-xs uppercase tracking-[0.25em] font-medium hover:bg-black hover:text-white transition-all duration-300 min-w-[200px] text-center"
+        >
+          Our Story
+        </Link>
+      </div>
     </section>
   );
 }
@@ -114,8 +126,8 @@ function ValuePropositions() {
 }
 
 function SocialFeed() {
-  const socialImages = Array(6).fill(null);
-
+  const socialImages = ['/1.jpg', '/2.jpg', '/3.jpg', '/4.jpg', '/5.jpg', '/6.jpg'];
+ 
   return (
     <section className="py-24 px-6">
       <div className="max-w-7xl mx-auto text-center">
@@ -126,12 +138,17 @@ function SocialFeed() {
           What's the latest?
         </h2>
         <p className="text-sm uppercase tracking-[0.3em] mb-12">Follow Us For More</p>
-
+ 
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-12">
-          {socialImages.map((_, index) => (
+          {socialImages.map((image, index) => (
             <div
               key={index}
-              className="aspect-square bg-gradient-to-br from-gray-200 to-gray-300"
+              className="aspect-square bg-center bg-cover transition-transform duration-500 hover:scale-[1.02]"
+              style={{ 
+                backgroundImage: `url(${image})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center center'
+              }}
             />
           ))}
         </div>
@@ -203,8 +220,12 @@ function BlogSection() {
           <div className="lg:col-span-2">
             <Link to={`/blog/${featuredPost.slug}`} className="group flex flex-col h-full">
               <div 
-                className="aspect-[16/9] mb-8 overflow-hidden"
-                style={{ background: featuredPost.image }}
+                className="aspect-[16/9] mb-8 overflow-hidden bg-gray-100"
+                style={{ 
+                  backgroundImage: `url(${featuredPost.image})`,
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center center'
+                }}
               >
                 <div className="w-full h-full transition-transform duration-700 group-hover:scale-105" />
               </div>
@@ -228,8 +249,12 @@ function BlogSection() {
             {sidePosts.map((post) => (
               <Link key={post.id} to={`/blog/${post.slug}`} className="group flex gap-4 items-start">
                 <div 
-                  className="w-20 h-20 flex-shrink-0 overflow-hidden"
-                  style={{ background: post.image }}
+                  className="w-20 h-20 flex-shrink-0 overflow-hidden bg-gray-100"
+                  style={{ 
+                    backgroundImage: `url(${post.image})`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center center'
+                  }}
                 >
                    <div className="w-full h-full transition-transform duration-500 group-hover:scale-110" />
                 </div>
